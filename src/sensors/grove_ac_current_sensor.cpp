@@ -13,9 +13,9 @@ void ACCurrentThread::Run() {
     mySensor.begin(&softwarei2c);
     while (true) {
         softwarei2c.begin(AC_CURRENT_SDAPIN, AC_CURRENT_SCLPIN);
-        mySensor.read();
-        data[0] = mySensor.getTemperature();
-        data[1] = mySensor.getHumidity();
+        status =  mySensor.read();
+        data[0] = (int32_t)(mySensor.getTemperature()*100);  
+        data[1] = (int32_t)(mySensor.getHumidity());
  
         Delay(Ticks::MsToTicks(SENSOR_READ_DELAY));
     }
@@ -31,7 +31,7 @@ void grove_ac_current::init() {
 bool grove_ac_current::read(struct sensor_data *sdata) {
 
     sdata->data      = accurrentThread->data;
-    sdata->data_type = SENSOR_DATA_TYPE_INT32;
+    sdata->data_type = SENSOR_DATA_TYPE_FLOAT;
     sdata->size      = sizeof(accurrentThread->data);
     sdata->id        = GROVE_AC_CURRENT;
     sdata->name      = name;

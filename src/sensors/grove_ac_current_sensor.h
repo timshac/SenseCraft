@@ -34,10 +34,10 @@ class grove_ac_current : public sensor_base {   //grove_sgp30_sensor
 
   private:
     const char *name = "Current_PF"; 
-    const char *data_unit = "Amps,NA";
-    int         sht20_value[2];  //sgp30_value
+    const char *data_unit = "Amps,cos θ";
+    int         sht20_value[2];  
 
-    ACCurrentThread *accurrentThread;  //Sgp30 *sgp30;
+    ACCurrentThread *accurrentThread; 
 };
 
 #endif
