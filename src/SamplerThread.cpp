@@ -9,6 +9,7 @@
 #include "sensors/grove_sht4x_sensor.h"
 #include "sensors/grove_soil_sensor.h"
 #include "sensors/grove_visionai_sensor.h"
+#include "sensors/grove_ac_current_sensor.h"
 #include <vector>
 
 SamplerThread::SamplerThread(SysConfig &config, UI &ui)
@@ -30,6 +31,7 @@ void SamplerThread::Run() {
     sensors.push_back(new grove_sgp30_sensor());
     sensors.push_back(new grove_soil_sensor());
     sensors.push_back(new grove_visionai_sensor());
+    sensors.push_back(new grove_ac_current());
     // sensors.push_back(new FakeSensor());
 
     for (auto sensor : sensors) {

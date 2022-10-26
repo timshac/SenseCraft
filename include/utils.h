@@ -60,6 +60,7 @@ enum sensor_type {
     GROVE_SHT4X,
     GROVE_SGP30,
     GROVE_SOIL,
+    GROVE_AC_CURRENT,
 };
 
 enum lora_freq {

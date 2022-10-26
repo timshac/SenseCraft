@@ -48,6 +48,7 @@ void setup() {
     uint32_t start = millis();
     while (!LOGSS && (millis() - start) < 1500)
         ; // Open the Serial Monitor to get started or wait for 1.5"
+    LOGSS.println("boot...");
 
 
     Message *btnMail = new Message(256);
@@ -64,6 +65,6 @@ int freeMemory() {
 }
 
 void loop() {
-    // LOGSS.printf("Main Stacks Free Bytes Remaining %d\r\n", uxTaskGetStackHighWaterMark(NULL));
+    LOGSS.printf("Main Stacks Free Bytes Remaining %d\r\n", uxTaskGetStackHighWaterMark(NULL));
     vTaskDelete(NULL);
 }
